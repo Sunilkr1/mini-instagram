@@ -1,0 +1,30 @@
+[
+  {
+    "id": "b7e74d93-5be8-4162-b462-552921151c86",
+    "image": "1770053588374.jpeg",
+    "caption": "I AM NOT THE DANGER I AM THE DANGER.💀",
+    "likes": 3,
+    "comments": [
+      {
+        "id": "2162c6b0-deaf-430c-b955-65f6e3e11105",
+        "text": "🔥",
+        "createdAt": "2026-02-02T17:38:40.308Z",
+        "userId": 1770053792461,
+        "username": "IronMan"
+      }
+    ],
+    "createdAt": "2026-02-02T17:33:08.389Z",
+    "userId": 1770051749585,
+    "username": "vikash"
+  },
+  {
+    "id": "76de90d4-ad2f-45b9-81e7-925efaede65b",
+    "image": "1770053890370.jpg",
+    "caption": "I love you 3000 😘😘😘",
+    "likes": 0,
+    "comments": [],
+    "createdAt": "2026-02-02T17:38:10.429Z",
+    "userId": 1770053792461,
+    "username": "IronMan"
+  }
+]

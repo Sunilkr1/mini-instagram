@@ -1,0 +1,35 @@
+<%- include("../partials/navbar") %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Post • Instagram</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <main class="main-wrap">
+    <div class="form-card">
+      <h1 class="form-title">Create new post</h1>
+
+      <form action="/posts" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label>Photo</label>
+          <input type="file" name="image" accept="image/*" required />
+        </div>
+        <div class="form-group">
+          <label>Caption</label>
+          <textarea name="caption" placeholder="Write a caption..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Share</button>
+      </form>
+
+      <div class="form-footer">
+        <a href="/posts">← Back to feed</a>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

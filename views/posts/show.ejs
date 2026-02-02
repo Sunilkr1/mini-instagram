@@ -1,0 +1,87 @@
+<%- include("../partials/navbar") %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post • Instagram</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <main class="main-wrap">
+    <div class="show-header">
+      <a href="/posts" class="back-link">← Back to feed</a>
+    </div>
+
+    <article class="show-card">
+      <div class="show-card-header">
+        <div class="show-card-user">
+          <div class="show-card-avatar"><%= (post.username || "?")[0].toUpperCase() %></div>
+          <span class="show-card-username">@<%= post.username || "user" %></span>
+        </div>
+        <% if (currentUser && String(currentUser.id) === String(post.userId)) { %>
+          <div class="show-card-owner-actions">
+            <a href="/posts/<%= post.id %>/edit">Edit</a>
+            <form action="/posts/<%= post.id %>?_method=DELETE" method="POST">
+              <input type="hidden" name="_method" value="DELETE">
+              <button type="submit" class="btn-delete">Delete</button>
+            </form>
+          </div>
+        <% } %>
+      </div>
+
+      <img src="/uploads/<%= post.image %>" alt="Post" class="show-card-img" />
+
+      <div class="show-card-body">
+        <div class="show-card-actions">
+          <% if (currentUser) { %>
+            <form action="/posts/<%= post.id %>/like" method="POST" class="show-like-form">
+              <button type="submit" class="btn-like">❤️</button>
+            </form>
+          <% } %>
+          <span><%= post.likes || 0 %> likes</span>
+        </div>
+
+        <p class="show-card-caption">
+          <span class="username">@<%= post.username || "user" %></span>
+          <%= post.caption || "" %>
+        </p>
+
+        <section class="comments-section">
+          <h3 class="comments-title">Comments</h3>
+
+          <% if (!post.comments || post.comments.length === 0) { %>
+            <p class="login-to-action">No comments yet.</p>
+          <% } else { %>
+            <% post.comments.forEach(comment => { %>
+              <div class="comment-item">
+                <span>
+                  <span class="username">@<%= comment.username || "user" %></span>
+                  <%= comment.text %>
+                </span>
+                <% if (currentUser && String(currentUser.id) === String(comment.userId)) { %>
+                  <form action="/posts/<%= post.id %>/comment/<%= comment.id %>?_method=DELETE" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="comment-delete-btn">Delete</button>
+                  </form>
+                <% } %>
+              </div>
+            <% }) %>
+          <% } %>
+
+          <% if (currentUser) { %>
+            <form action="/posts/<%= post.id %>/comment" method="POST" class="comment-form">
+              <input type="text" name="text" placeholder="Add a comment..." required />
+              <button type="submit">Post</button>
+            </form>
+          <% } else { %>
+            <p class="login-to-action"><a href="/login">Log in</a> to like or comment.</p>
+          <% } %>
+        </section>
+      </div>
+    </article>
+  </main>
+
+</body>
+</html>

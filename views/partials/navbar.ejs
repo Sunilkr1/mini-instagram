@@ -1,0 +1,27 @@
+<header class="app-header">
+  <div class="header-inner">
+    <div class="header-logo">
+      <a href="/posts">Instagram</a>
+    </div>
+    <nav class="header-nav">
+      <% if (!currentUser) { %>
+        <a href="/login">Log in</a>
+        <a href="/signup">Sign up</a>
+      <% } else { %>
+        <span class="username">@<%= currentUser.username %></span>
+        <form action="/logout" method="POST">
+          <button type="submit" class="btn-logout">Log out</button>
+        </form>
+      <% } %>
+    </nav>
+  </div>
+</header>
+
+<div class="flash-wrap">
+  <% if (success && success.length) { %>
+    <p class="flash-success"><%= success %></p>
+  <% } %>
+  <% if (error && error.length) { %>
+    <p class="flash-error"><%= error %></p>
+  <% } %>
+</div>

@@ -1,0 +1,32 @@
+<%- include("../partials/navbar") %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Post • Instagram</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <main class="main-wrap">
+    <div class="form-card">
+      <h1 class="form-title">Edit caption</h1>
+
+      <form action="/posts/<%= post.id %>?_method=PUT" method="POST">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="form-group">
+          <label>Caption</label>
+          <textarea name="caption"><%= post.caption || "" %></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Update</button>
+      </form>
+
+      <div class="form-footer">
+        <a href="/posts/<%= post.id %>">Cancel</a>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

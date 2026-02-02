@@ -1,0 +1,74 @@
+<%- include("../partials/navbar") %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instagram</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <main class="main-wrap">
+    <div class="feed-header">
+      <h1 class="feed-title">Feed</h1>
+      <% if (currentUser) { %>
+        <a href="/posts/new" class="btn-new-post">➕ New Post</a>
+      <% } %>
+    </div>
+
+    <% if (posts.length === 0) { %>
+      <div class="empty-feed">
+        <p>No posts yet.</p>
+        <% if (currentUser) { %>
+          <a href="/posts/new" class="btn-new-post">Create your first post</a>
+        <% } else { %>
+          <a href="/login">Log in</a> to post.
+        <% } %>
+      </div>
+    <% } %>
+
+    <% posts.forEach(post => { %>
+      <article class="post-card">
+        <div class="post-card-header">
+          <div class="post-card-user">
+            <div class="post-card-avatar"><%= (post.username || "?")[0].toUpperCase() %></div>
+            <span class="post-card-username">
+              <a href="/posts/<%= post.id %>">@<%= post.username || "user" %></a>
+            </span>
+          </div>
+          <div class="post-card-actions">
+            <a href="/posts/<%= post.id %>">View</a>
+            <% if (currentUser && String(currentUser.id) === String(post.userId)) { %>
+              <a href="/posts/<%= post.id %>/edit">Edit</a>
+            <% } %>
+          </div>
+        </div>
+
+        <a href="/posts/<%= post.id %>" class="post-card-img-wrap">
+          <img src="/uploads/<%= post.image %>" alt="Post" />
+        </a>
+
+        <div class="post-card-body">
+          <p class="post-card-likes"><%= post.likes || 0 %> likes</p>
+          <p class="post-card-caption">
+            <span class="username">@<%= post.username || "user" %></span>
+            <%= post.caption || "" %>
+          </p>
+          <p class="post-card-time"><%= typeof timeAgo === "function" ? timeAgo(post.createdAt) : "" %></p>
+        </div>
+
+        <div class="post-card-footer">
+          <a href="/posts/<%= post.id %>">View post</a>
+          <% if (currentUser) { %>
+            <form action="/posts/<%= post.id %>/like" method="POST">
+              <button type="submit" class="btn-icon">❤️ Like</button>
+            </form>
+          <% } %>
+        </div>
+      </article>
+    <% }) %>
+  </main>
+
+</body>
+</html>
