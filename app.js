@@ -30,7 +30,8 @@ app.use(
   methodOverride((req) => {
     if (req.query && typeof req.query._method === "string")
       return req.query._method;
-    if (req.body && typeof req.body._method === "string") return req.body._method;
+    if (req.body && typeof req.body._method === "string")
+      return req.body._method;
   }),
 );
 
@@ -76,6 +77,6 @@ app.use("/posts", postroutes);
 /* =======================
    SERVER
 ======================= */
-app.listen(port, () => {
+app.listen(port, "0.0.0.0", () => {
   console.log(`✅ Server running on port ${port}`);
 });
