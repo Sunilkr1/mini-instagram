@@ -25,6 +25,10 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+app.get("/", (req, res) => {
+  res.redirect("/posts");
+});
+
 // Support _method in query (reliable) or body so POST forms can act as DELETE/PUT
 app.use(
   methodOverride((req) => {

@@ -11,6 +11,13 @@
         "createdAt": "2026-02-02T17:38:40.308Z",
         "userId": 1770053792461,
         "username": "IronMan"
+      },
+      {
+        "id": "59504188-fc29-4d16-b7a2-1594d6b7f42c",
+        "text": "good",
+        "createdAt": "2026-02-02T19:35:34.090Z",
+        "userId": 1770051749585,
+        "username": "vikash"
       }
     ],
     "createdAt": "2026-02-02T17:33:08.389Z",
@@ -21,10 +28,28 @@
     "id": "76de90d4-ad2f-45b9-81e7-925efaede65b",
     "image": "1770053890370.jpg",
     "caption": "I love you 3000 😘😘😘",
-    "likes": 0,
+    "likes": 1,
     "comments": [],
     "createdAt": "2026-02-02T17:38:10.429Z",
     "userId": 1770053792461,
     "username": "IronMan"
+  },
+  {
+    "id": "4a1c3d06-7281-4a88-bdde-31859466b29f",
+    "image": "1770060868866.jpg",
+    "caption": "Helo ....",
+    "likes": 1,
+    "comments": [
+      {
+        "id": "d14e4402-0b0e-4292-81a5-c0abb4da0275",
+        "text": "❤️❤️",
+        "createdAt": "2026-02-02T19:34:48.525Z",
+        "userId": 1770051749585,
+        "username": "vikash"
+      }
+    ],
+    "createdAt": "2026-02-02T19:34:28.898Z",
+    "userId": 1770051749585,
+    "username": "vikash"
   }
 ]
